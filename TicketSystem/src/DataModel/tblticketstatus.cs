@@ -14,6 +14,12 @@ namespace DataModel
     
     public partial class tblticketstatus
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tblticketstatus()
+        {
+            this.tbltickets = new HashSet<tblticket>();
+        }
+    
         public int id { get; set; }
         public string ticketstatus { get; set; }
         public Nullable<int> createdby { get; set; }
@@ -21,5 +27,8 @@ namespace DataModel
         public Nullable<int> modifiedby { get; set; }
         public Nullable<System.DateTime> modifiedon { get; set; }
         public bool deleted { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tblticket> tbltickets { get; set; }
     }
 }

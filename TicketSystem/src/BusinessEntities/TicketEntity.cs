@@ -10,7 +10,7 @@ namespace BusinessEntities
     {
         public int id { get; set; }
         public Nullable<int> deptid { get; set; }
-        public string ticketstatusid { get; set; }
+        public Nullable<int> ticketstatusid { get; set; }
         public string ticketname { get; set; }
         public string ticketdesc { get; set; }
         public Nullable<int> status { get; set; }

@@ -16,7 +16,7 @@ namespace DataModel
     {
         public int id { get; set; }
         public Nullable<int> deptid { get; set; }
-        public string ticketstatusid { get; set; }
+        public Nullable<int> ticketstatusid { get; set; }
         public string ticketname { get; set; }
         public string ticketdesc { get; set; }
         public Nullable<int> status { get; set; }
@@ -27,5 +27,6 @@ namespace DataModel
         public bool deleted { get; set; }
     
         public virtual tbldepartment tbldepartment { get; set; }
+        public virtual tblticketstatus tblticketstatus { get; set; }
     }
 }

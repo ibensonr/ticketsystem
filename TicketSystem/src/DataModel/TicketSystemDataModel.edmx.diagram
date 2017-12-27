@@ -19,6 +19,7 @@
         <AssociationConnector Association="TicketSystemModel.FK_tbluserdepartment_tbluser" ManuallyRouted="false" />
         <AssociationConnector Association="TicketSystemModel.FK_tbluserinfo_tbluserinfo" ManuallyRouted="false" />
         <EntityTypeShape EntityType="TicketSystemModel.tblticketstatus" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="TicketSystemModel.FK_tbltickets_tblticketstatus" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

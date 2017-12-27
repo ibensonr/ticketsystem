@@ -37,6 +37,16 @@ namespace BusinessServices
             var ticket = _unitOfWork.TicketRepository.GetByID(ticketId);
             if (ticket != null)
             {
+                //var config = new MapperConfiguration(cfg =>
+                //{
+                //    cfg.CreateMap<tblticket, TicketEntity>();
+                //    //cfg.AddProfile()... etc...
+                //});
+                //var mapper = config.CreateMapper();
+                Mapper.Initialize(cfg =>
+                {
+                    cfg.CreateMap<tblticket, TicketEntity>();                    
+                });                
                 var ticketModel = Mapper.Map<tblticket, TicketEntity>(ticket);
                 return ticketModel;
             }
