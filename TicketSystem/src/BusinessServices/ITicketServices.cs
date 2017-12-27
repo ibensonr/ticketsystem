@@ -10,7 +10,7 @@ namespace BusinessServices
     /// <summary>
     /// Ticket Service Contract
     /// </summary>
-    interface ITicketServices
+    public interface ITicketServices
     {
         TicketEntity GetTicketById(int ticketId);
         IEnumerable<TicketEntity> GetAllTickets();
