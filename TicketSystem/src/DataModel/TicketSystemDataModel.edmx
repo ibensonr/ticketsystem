@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TicketSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TicketSystemModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tbldepartment">
           <Key>
             <PropertyRef Name="id" />
@@ -223,8 +223,7 @@
             <End Role="tbluserrole" EntitySet="tbluserrole" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TicketSystemModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -289,18 +288,6 @@
           <Property Name="modifiedon" Type="DateTime" Precision="3" />
           <Property Name="deleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="tbldepartment" Relationship="Self.FK_tbltickets_tbldepartment" FromRole="tbltickets" ToRole="tbldepartment" />
-        </EntityType>
-        <EntityType Name="tblticketstatu">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ticketstatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="createdby" Type="Int32" />
-          <Property Name="createdon" Type="DateTime" Precision="3" />
-          <Property Name="modifiedby" Type="Int32" />
-          <Property Name="modifiedon" Type="DateTime" Precision="3" />
-          <Property Name="deleted" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="tbluser">
           <Key>
@@ -430,7 +417,6 @@
           <EntitySet Name="tblroles" EntityType="Self.tblrole" />
           <EntitySet Name="tbltickethistories" EntityType="Self.tbltickethistory" />
           <EntitySet Name="tbltickets" EntityType="Self.tblticket" />
-          <EntitySet Name="tblticketstatus" EntityType="Self.tblticketstatu" />
           <EntitySet Name="tblusers" EntityType="Self.tbluser" />
           <EntitySet Name="tbluserdepartments" EntityType="Self.tbluserdepartment" />
           <EntitySet Name="tbluserinfoes" EntityType="Self.tbluserinfo" />
@@ -455,7 +441,20 @@
             <End Role="tbluser" EntitySet="tblusers" />
             <End Role="tbluserinfo" EntitySet="tbluserinfoes" />
           </AssociationSet>
+          <EntitySet Name="tblticketstatus" EntityType="TicketSystemModel.tblticketstatus" />
         </EntityContainer>
+        <EntityType Name="tblticketstatus">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ticketstatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="createdby" Type="Int32" />
+          <Property Name="createdon" Type="DateTime" Precision="3" />
+          <Property Name="modifiedby" Type="Int32" />
+          <Property Name="modifiedon" Type="DateTime" Precision="3" />
+          <Property Name="deleted" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -516,19 +515,6 @@
                 <ScalarProperty Name="ticketname" ColumnName="ticketname" />
                 <ScalarProperty Name="ticketdesc" ColumnName="ticketdesc" />
                 <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="createdby" ColumnName="createdby" />
-                <ScalarProperty Name="createdon" ColumnName="createdon" />
-                <ScalarProperty Name="modifiedby" ColumnName="modifiedby" />
-                <ScalarProperty Name="modifiedon" ColumnName="modifiedon" />
-                <ScalarProperty Name="deleted" ColumnName="deleted" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tblticketstatus">
-            <EntityTypeMapping TypeName="TicketSystemModel.tblticketstatu">
-              <MappingFragment StoreEntitySet="tblticketstatus">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="ticketstatus" ColumnName="ticketstatus" />
                 <ScalarProperty Name="createdby" ColumnName="createdby" />
                 <ScalarProperty Name="createdon" ColumnName="createdon" />
                 <ScalarProperty Name="modifiedby" ColumnName="modifiedby" />
@@ -598,6 +584,19 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblticketstatus">
+            <EntityTypeMapping TypeName="TicketSystemModel.tblticketstatus">
+              <MappingFragment StoreEntitySet="tblticketstatus">
+                <ScalarProperty Name="deleted" ColumnName="deleted" />
+                <ScalarProperty Name="modifiedon" ColumnName="modifiedon" />
+                <ScalarProperty Name="modifiedby" ColumnName="modifiedby" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+                <ScalarProperty Name="createdby" ColumnName="createdby" />
+                <ScalarProperty Name="ticketstatus" ColumnName="ticketstatus" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -612,7 +611,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

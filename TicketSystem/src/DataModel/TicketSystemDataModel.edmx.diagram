@@ -9,7 +9,6 @@
         <EntityTypeShape EntityType="TicketSystemModel.tblrole" Width="1.5" PointX="0.75" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketSystemModel.tbltickethistory" Width="1.5" PointX="8.75" PointY="2.375" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketSystemModel.tblticket" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TicketSystemModel.tblticketstatu" Width="1.5" PointX="8.75" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketSystemModel.tbluser" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketSystemModel.tbluserdepartment" Width="1.5" PointX="6" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="TicketSystemModel.tbluserinfo" Width="1.5" PointX="6" PointY="8.625" IsExpanded="true" />
@@ -19,6 +18,7 @@
         <AssociationConnector Association="TicketSystemModel.FK_tbluserrole_tblrole" ManuallyRouted="false" />
         <AssociationConnector Association="TicketSystemModel.FK_tbluserdepartment_tbluser" ManuallyRouted="false" />
         <AssociationConnector Association="TicketSystemModel.FK_tbluserinfo_tbluserinfo" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TicketSystemModel.tblticketstatus" Width="1.5" PointX="0.75" PointY="0.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

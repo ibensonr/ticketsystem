@@ -12,7 +12,7 @@ namespace DataModel
     using System;
     using System.Collections.Generic;
     
-    public partial class tblticketstatu
+    public partial class tblticketstatus
     {
         public int id { get; set; }
         public string ticketstatus { get; set; }

@@ -29,10 +29,10 @@ namespace DataModel
         public virtual DbSet<tblrole> tblroles { get; set; }
         public virtual DbSet<tbltickethistory> tbltickethistories { get; set; }
         public virtual DbSet<tblticket> tbltickets { get; set; }
-        public virtual DbSet<tblticketstatu> tblticketstatus { get; set; }
         public virtual DbSet<tbluser> tblusers { get; set; }
         public virtual DbSet<tbluserdepartment> tbluserdepartments { get; set; }
         public virtual DbSet<tbluserinfo> tbluserinfoes { get; set; }
         public virtual DbSet<tbluserrole> tbluserroles { get; set; }
+        public virtual DbSet<tblticketstatus> tblticketstatus { get; set; }
     }
 }

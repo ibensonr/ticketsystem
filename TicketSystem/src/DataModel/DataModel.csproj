@@ -63,7 +63,7 @@
     <Compile Include="tbltickethistory.cs">
       <DependentUpon>TicketSystemDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="tblticketstatu.cs">
+    <Compile Include="tblticketstatus.cs">
       <DependentUpon>TicketSystemDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="tbluser.cs">
@@ -93,6 +93,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TicketSystemDataModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="TicketSystemDataModel.edmx">
