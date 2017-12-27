@@ -4,6 +4,9 @@
     <TargetFrameworks>dnx451;dnxcore50</TargetFrameworks>
     <AssemblyName>TicketSystem</AssemblyName>
     <PackageId>TicketSystem</PackageId>
+    <ApplicationIcon />
+    <OutputType>Exe</OutputType>
+    <StartupObject />
   </PropertyGroup>
 
   <ItemGroup>
