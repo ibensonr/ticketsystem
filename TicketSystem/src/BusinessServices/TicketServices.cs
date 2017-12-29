@@ -37,17 +37,13 @@ namespace BusinessServices
             var ticket = _unitOfWork.TicketRepository.GetByID(ticketId);
             if (ticket != null)
             {
-                //var config = new MapperConfiguration(cfg =>
-                //{
-                //    cfg.CreateMap<tblticket, TicketEntity>();
-                //    //cfg.AddProfile()... etc...
-                //});
-                //var mapper = config.CreateMapper();
-                Mapper.Initialize(cfg =>
+                var config = new MapperConfiguration(cfg =>
                 {
-                    cfg.CreateMap<tblticket, TicketEntity>();                    
-                });                
-                var ticketModel = Mapper.Map<tblticket, TicketEntity>(ticket);
+                    cfg.CreateMap<tblticket, TicketEntity>();
+                    //cfg.AddProfile()... etc...
+                });
+                var mapper = config.CreateMapper();                              
+                var ticketModel = mapper.Map<tblticket, TicketEntity>(ticket);
                 return ticketModel;
             }
             return null;
@@ -61,8 +57,14 @@ namespace BusinessServices
         {
             var tickets = _unitOfWork.TicketRepository.GetAll().ToList();
             if (tickets.Any())
-            {                
-                var ticketsModel = Mapper.Map<List<tblticket>, List<TicketEntity>>(tickets);
+            {
+                var config = new MapperConfiguration(cfg =>
+                {
+                    cfg.CreateMap<tblticket, TicketEntity>();
+                    //cfg.AddProfile()... etc...
+                });
+                var mapper = config.CreateMapper();
+                var ticketsModel = mapper.Map<List<tblticket>, List<TicketEntity>>(tickets);
                 return ticketsModel;
             }
             return null;
