@@ -45,9 +45,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ITicketHistoryServices.cs" />
     <Compile Include="ITicketServices.cs" />
+    <Compile Include="IUserServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TicketHistoryService.cs" />
     <Compile Include="TicketServices.cs" />
+    <Compile Include="UserServices.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessEntities\BusinessEntities.csproj">

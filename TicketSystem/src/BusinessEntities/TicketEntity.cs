@@ -23,5 +23,7 @@ namespace BusinessEntities
         public string subject { get; set; }
         public string description { get; set; }
         public string comment { get; set; }
+        public ICollection<TicketHistoryEntity> tbltickethistory { get; set; }
+        public UserEntity userdetails { get; set; }
     }
 }

@@ -137,6 +137,18 @@
           <Property Name="modifiedon" Type="datetime" />
           <Property Name="deleted" Type="bit" Nullable="false" />
         </EntityType>
+        <Association Name="FK_tbltickethistory_tbltickets">
+          <End Role="tbltickets" Type="Self.tbltickets" Multiplicity="0..1" />
+          <End Role="tbltickethistory" Type="Self.tbltickethistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbltickets">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbltickethistory">
+              <PropertyRef Name="ticketid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_tbltickets_tbldepartment">
           <End Role="tbldepartment" Type="Self.tbldepartment" Multiplicity="0..1" />
           <End Role="tbltickets" Type="Self.tbltickets" Multiplicity="*" />
@@ -219,6 +231,10 @@
           <EntitySet Name="tbluserdepartment" EntityType="Self.tbluserdepartment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbluserinfo" EntityType="Self.tbluserinfo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tbluserrole" EntityType="Self.tbluserrole" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_tbltickethistory_tbltickets" Association="Self.FK_tbltickethistory_tbltickets">
+            <End Role="tbltickets" EntitySet="tbltickets" />
+            <End Role="tbltickethistory" EntitySet="tbltickethistory" />
+          </AssociationSet>
           <AssociationSet Name="FK_tbltickets_tbldepartment" Association="Self.FK_tbltickets_tbldepartment">
             <End Role="tbldepartment" EntitySet="tbldepartment" />
             <End Role="tbltickets" EntitySet="tbltickets" />
@@ -295,6 +311,7 @@
           <Property Name="subject" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="comment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbltickets" Relationship="TicketSystemModel.FK_tbltickethistory_tbltickets" FromRole="tbltickethistory" ToRole="tblticket" />
         </EntityType>
         <EntityType Name="tblticket">
           <Key>
@@ -315,6 +332,7 @@
           <Property Name="subject" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="comment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="tbltickethistory" Relationship="TicketSystemModel.FK_tbltickethistory_tbltickets" FromRole="tblticket" ToRole="tbltickethistory" />
         </EntityType>
         <EntityType Name="tbluser">
           <Key>
@@ -473,6 +491,10 @@
             <End Role="tblticketstatus" EntitySet="tblticketstatus" />
             <End Role="tblticket" EntitySet="tbltickets" />
           </AssociationSet>
+          <AssociationSet Name="FK_tbltickethistory_tbltickets" Association="TicketSystemModel.FK_tbltickethistory_tbltickets">
+            <End Role="tblticket" EntitySet="tbltickets" />
+            <End Role="tbltickethistory" EntitySet="tbltickethistories" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="tblticketstatus">
           <Key>
@@ -496,6 +518,18 @@
             </Principal>
             <Dependent Role="tblticket">
               <PropertyRef Name="ticketstatusid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_tbltickethistory_tbltickets">
+          <End Type="TicketSystemModel.tblticket" Role="tblticket" Multiplicity="0..1" />
+          <End Type="TicketSystemModel.tbltickethistory" Role="tbltickethistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblticket">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="tbltickethistory">
+              <PropertyRef Name="ticketid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

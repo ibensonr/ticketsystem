@@ -42,8 +42,9 @@ namespace BusinessServices
                     cfg.CreateMap<tblticket, TicketEntity>();
                     //cfg.AddProfile()... etc...
                 });
-                var mapper = config.CreateMapper();                              
+                var mapper = config.CreateMapper();
                 var ticketModel = mapper.Map<tblticket, TicketEntity>(ticket);
+
                 return ticketModel;
             }
             return null;
@@ -55,7 +56,7 @@ namespace BusinessServices
         /// <returns></returns>
         public IEnumerable<TicketEntity> GetAllTickets()
         {
-            var tickets = _unitOfWork.TicketRepository.GetAll().ToList();
+            var tickets = _unitOfWork.TicketRepository.GetAll().ToList();            
             if (tickets.Any())
             {
                 var config = new MapperConfiguration(cfg =>
@@ -65,6 +66,33 @@ namespace BusinessServices
                 });
                 var mapper = config.CreateMapper();
                 var ticketsModel = mapper.Map<List<tblticket>, List<TicketEntity>>(tickets);
+
+                return ticketsModel;
+            }
+            return null;
+        }
+
+        public TicketEntity GetTicketHistory()
+        {
+            // var tickets = _unitOfWork.TicketRepository.GetAll().ToList();
+            var ticket = _unitOfWork.TicketRepository.GetWithInclude(t => t.id == 1, "tbltickethistory").ToList().FirstOrDefault();
+            if (ticket != null)
+            {
+                var config = new MapperConfiguration(cfg =>
+                {
+                    cfg.CreateMap<tblticket, TicketEntity>();
+                    //cfg.AddProfile()... etc...
+                });
+                var mapper = config.CreateMapper();
+                var ticketsModel = mapper.Map<tblticket, TicketEntity>(ticket);
+
+                //load user data
+                var user = _unitOfWork.UserRepository.GetByID(ticket.createdby);
+                if (user != null)
+                {
+                    ticketsModel.userdetails = mapper.Map<tbluser, UserEntity>(user);
+                }
+
                 return ticketsModel;
             }
             return null;
