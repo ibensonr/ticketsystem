@@ -17,14 +17,16 @@ namespace DataModel
         public int id { get; set; }
         public Nullable<int> deptid { get; set; }
         public Nullable<int> ticketstatusid { get; set; }
-        public string ticketname { get; set; }
-        public string ticketdesc { get; set; }
         public Nullable<int> status { get; set; }
         public Nullable<int> createdby { get; set; }
         public Nullable<System.DateTime> createdon { get; set; }
         public Nullable<int> modifiedby { get; set; }
         public Nullable<System.DateTime> modifiedon { get; set; }
         public bool deleted { get; set; }
+        public Nullable<int> assignedtoid { get; set; }
+        public string subject { get; set; }
+        public string description { get; set; }
+        public string comment { get; set; }
     
         public virtual tbldepartment tbldepartment { get; set; }
         public virtual tblticketstatus tblticketstatus { get; set; }

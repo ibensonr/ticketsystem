@@ -81,7 +81,7 @@ namespace BusinessServices
             {
                 var ticket = new tblticket
                 {
-                    ticketname = ticketEntity.ticketname
+                    subject = ticketEntity.subject
                 };
                 _unitOfWork.TicketRepository.Insert(ticket);
                 _unitOfWork.Save();
@@ -106,7 +106,7 @@ namespace BusinessServices
                     var ticket = _unitOfWork.TicketRepository.GetByID(ticketId);
                     if (ticket != null)
                     {
-                        ticket.ticketname = ticketEntity.ticketname;
+                        ticket.subject = ticketEntity.subject;
                         _unitOfWork.TicketRepository.Update(ticket);
                         _unitOfWork.Save();
                         scope.Complete();

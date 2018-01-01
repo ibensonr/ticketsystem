@@ -37,9 +37,12 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ticketid" Type="int" />
+          <Property Name="deptid" Type="int" />
           <Property Name="assignedtoid" Type="int" />
           <Property Name="ticketstatusid" Type="nchar" MaxLength="10" />
-          <Property Name="comments" Type="varchar" MaxLength="250" />
+          <Property Name="subject" Type="varchar" MaxLength="250" />
+          <Property Name="description" Type="varchar" MaxLength="250" />
+          <Property Name="comment" Type="nvarchar" MaxLength="250" />
           <Property Name="status" Type="int" />
           <Property Name="createdby" Type="int" />
           <Property Name="createdon" Type="datetime" />
@@ -53,9 +56,11 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="deptid" Type="int" />
+          <Property Name="assignedtoid" Type="int" />
           <Property Name="ticketstatusid" Type="int" />
-          <Property Name="ticketname" Type="varchar" MaxLength="250" />
-          <Property Name="ticketdesc" Type="varchar" MaxLength="250" />
+          <Property Name="subject" Type="varchar" MaxLength="250" />
+          <Property Name="description" Type="varchar" MaxLength="250" />
+          <Property Name="comment" Type="nvarchar" MaxLength="250" />
           <Property Name="status" Type="int" />
           <Property Name="createdby" Type="int" />
           <Property Name="createdon" Type="datetime" />
@@ -280,13 +285,16 @@
           <Property Name="ticketid" Type="Int32" />
           <Property Name="assignedtoid" Type="Int32" />
           <Property Name="ticketstatusid" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="comments" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="Int32" />
           <Property Name="createdby" Type="Int32" />
           <Property Name="createdon" Type="DateTime" Precision="3" />
           <Property Name="modifiedby" Type="Int32" />
           <Property Name="modifiedon" Type="DateTime" Precision="3" />
           <Property Name="deleted" Type="Boolean" Nullable="false" />
+          <Property Name="deptid" Type="Int32" />
+          <Property Name="subject" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="comment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tblticket">
           <Key>
@@ -295,8 +303,6 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="deptid" Type="Int32" />
           <Property Name="ticketstatusid" Type="Int32" />
-          <Property Name="ticketname" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-          <Property Name="ticketdesc" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <Property Name="status" Type="Int32" />
           <Property Name="createdby" Type="Int32" />
           <Property Name="createdon" Type="DateTime" Precision="3" />
@@ -305,6 +311,10 @@
           <Property Name="deleted" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="tbldepartment" Relationship="Self.FK_tbltickets_tbldepartment" FromRole="tbltickets" ToRole="tbldepartment" />
           <NavigationProperty Name="tblticketstatus" Relationship="TicketSystemModel.FK_tbltickets_tblticketstatus" FromRole="tblticket" ToRole="tblticketstatus" />
+          <Property Name="assignedtoid" Type="Int32" />
+          <Property Name="subject" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="comment" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="tbluser">
           <Key>
@@ -526,11 +536,14 @@
           <EntitySetMapping Name="tbltickethistories">
             <EntityTypeMapping TypeName="TicketSystemModel.tbltickethistory">
               <MappingFragment StoreEntitySet="tbltickethistory">
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="deptid" ColumnName="deptid" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="ticketid" ColumnName="ticketid" />
                 <ScalarProperty Name="assignedtoid" ColumnName="assignedtoid" />
                 <ScalarProperty Name="ticketstatusid" ColumnName="ticketstatusid" />
-                <ScalarProperty Name="comments" ColumnName="comments" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="createdby" ColumnName="createdby" />
                 <ScalarProperty Name="createdon" ColumnName="createdon" />
@@ -543,11 +556,13 @@
           <EntitySetMapping Name="tbltickets">
             <EntityTypeMapping TypeName="TicketSystemModel.tblticket">
               <MappingFragment StoreEntitySet="tbltickets">
+                <ScalarProperty Name="comment" ColumnName="comment" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="subject" ColumnName="subject" />
+                <ScalarProperty Name="assignedtoid" ColumnName="assignedtoid" />
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="deptid" ColumnName="deptid" />
                 <ScalarProperty Name="ticketstatusid" ColumnName="ticketstatusid" />
-                <ScalarProperty Name="ticketname" ColumnName="ticketname" />
-                <ScalarProperty Name="ticketdesc" ColumnName="ticketdesc" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="createdby" ColumnName="createdby" />
                 <ScalarProperty Name="createdon" ColumnName="createdon" />
